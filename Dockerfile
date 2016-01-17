@@ -10,11 +10,15 @@ RUN groupadd -g 54322 dba
 RUN groupadd -g 54323 oper
 RUN groupadd -g 54327 asmdba
 RUN groupadd -g 54328 asoper
-RUN groupadd -g 54329 asadmin
+RUN groupadd -g 54329 asmadmin
 
 RUN useradd -m -g oinstall -G oinstall,oper,asmadmin,dba -u 54321 oracle
 #RUN; yum -y installs all the necessary packages.
-RUN yum -y oracle-rdbms-server-11gR2-preinstall perl wget unzip
+RUN /usr/bin/yum -y update
+RUN /usr/bin/yum -y gcc make wget unzip
+RUN cd /etc/yum.repos.d
+RUN wget https://raw.githubusercontent.com/jhnworks/orcl11204/master/public-yum-ol6.repo
+RUN /usr/bin/yum -y oracle-rdbms-server-11gR2-preinstall
 #RUNL /u01 is the directory in which the database sofware is installed
 RUN mkdir /u01
 #RUN; chown user:group is used to cange the user and group permissions of /u01
