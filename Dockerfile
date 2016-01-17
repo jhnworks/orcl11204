@@ -15,7 +15,8 @@ RUN groupadd -g 54329 asmadmin
 RUN useradd -m -g oinstall -G oinstall,oper,asmadmin,dba -u 54321 oracle
 #RUN; yum -y installs all the necessary packages.
 RUN /usr/bin/yum -y update
-RUN /usr/bin/yum -y gcc make wget unzip
+RUN /usr/bin/yum -y wget unzip
+RUN /usr/bin/yum -y groupinstall "Development Tools"
 RUN cd /etc/yum.repos.d
 RUN wget https://raw.githubusercontent.com/jhnworks/orcl11204/master/public-yum-ol6.repo
 RUN /usr/bin/yum -y oracle-rdbms-server-11gR2-preinstall
