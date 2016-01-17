@@ -15,7 +15,7 @@ RUN groupadd -g 54329 asmadmin
 RUN useradd -m -g oinstall -G oinstall,oper,asmadmin,dba -u 54321 oracle
 #RUN; yum -y installs all the necessary packages.
 RUN /usr/bin/yum -y update
-RUN /usr/bin/yum -y wget unzip
+RUN /usr/bin/yum -y install wget unzip
 RUN /usr/bin/yum -y groupinstall "Development Tools"
 RUN cd /etc/yum.repos.d
 RUN wget https://raw.githubusercontent.com/jhnworks/orcl11204/master/public-yum-ol6.repo
@@ -29,7 +29,7 @@ USER    oracle
 #WORKDIRL this sets the work directory
 WORKDIR /home/oracle
 #ENV; this sets a few env. variables needed by the getMOSPatch.sh script
-ENV mosUser=john.gnanamani@oracle.com mosPass=ASG9dcTG DownList=1,2
+ENV mosUser=xxxxxxx mosPass=xxxxx DownList=1,2
 #RUN; this downloads a modified version of the getMOSPatch.sh script. The only monidcation made is the make the downloads pre-selected
 #by settings the DownList environment variable
 RUN wget https://raw.githubusercontent.com/jhnworks/orcl11204/master/getMOSPatch.sh
