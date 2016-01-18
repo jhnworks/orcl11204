@@ -19,7 +19,7 @@ RUN /usr/bin/yum -y install wget unzip
 RUN /usr/bin/yum -y groupinstall "Development Tools"
 RUN cd /etc/yum.repos.d
 RUN wget https://raw.githubusercontent.com/jhnworks/orcl11204/master/public-yum-ol6.repo
-RUN /usr/bin/yum -y oracle-rdbms-server-11gR2-preinstall
+RUN /usr/bin/yum -y install oracle-rdbms-server-11gR2-preinstall
 #RUNL /u01 is the directory in which the database sofware is installed
 RUN mkdir /u01
 #RUN; chown user:group is used to cange the user and group permissions of /u01
